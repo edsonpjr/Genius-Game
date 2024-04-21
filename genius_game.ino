@@ -1,5 +1,4 @@
-// C++ code
-//
+// This is a Genius game simulator
 
 #define LED_RED 2
 #define LED_GREEN 3
