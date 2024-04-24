@@ -33,25 +33,25 @@ void setup(){
 
 void loop() {
   switch (currentGameState()) {
-  	case READY_NEXT_ROUND:
-      	Serial.println("Ready for the next round");
-		startRound();
-      	break;
+    case READY_NEXT_ROUND:
+      Serial.println("Ready for the next round");
+      startRound();
+      break;
     case USER_ANSWERING:
-      	Serial.println("User answering");
-        checkUserAnswer();
-      	break;
+      Serial.println("User answering");
+      checkUserAnswer();
+      break;
     case WIN:
-      	Serial.println("Winner");
-        winBlink();
-      	break;
+      Serial.println("Winner");
+      winBlink();
+      break;
     case GAME_OVER:
-	Serial.println("Game Over");
-    	gameOverBlink();
-      	break;
+      Serial.println("Game Over");
+      gameOverBlink();
+      break;
   }
+  
   delay(SECOND/2);
-
 }
 
 void startRound(){
