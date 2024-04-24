@@ -33,7 +33,7 @@ This Arduino project is a simulation of the classic electronic game "Genius". It
 6. Repeat steps 1-5 to play again and try to beat your high score!
 
 ## Credits
-This project was created by Edson Junior as a fun Arduino experiment inspired by the classic "Genius" game.
+This project was created by Edson Junior as a fun Arduino experiment inspired by the classic Genius game.
 
 ## License
 This project is licensed under the MIT License.
