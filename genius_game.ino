@@ -34,11 +34,11 @@ void setup(){
 void loop() {
   switch (currentGameState()) {
   	case READY_NEXT_ROUND:
-      	Serial.println("Pronto para a proxima level");
+      	Serial.println("Ready for the next round");
 		startRound();
       	break;
     case USER_ANSWERING:
-      	Serial.println("Jogador respondendo");
+      	Serial.println("User answering");
         checkUserAnswer();
       	break;
     case WIN:
@@ -46,7 +46,7 @@ void loop() {
         winBlink();
       	break;
     case GAME_OVER:
-      	Serial.println("Game Over");
+	Serial.println("Game Over");
     	gameOverBlink();
       	break;
   }
@@ -55,7 +55,7 @@ void loop() {
 }
 
 void startRound(){
-	level++;
+  level++;
   answeredLeds = 0;
   if(level <= SEQUENCE_LENGTH)
     blinkRoundLeds();
@@ -90,35 +90,35 @@ void checkUserAnswer(){
 }
 
 void blinkRoundLeds(){
-	for(int i = 0; i < level; i++){
-  		blinkLed(ledSequence[i]);
-    }
+  for(int i = 0; i < level; i++){
+    blinkLed(ledSequence[i]);
+  }
 }
   	
 void blinkLed(int port){
-	digitalWrite(port,HIGH);
-	delay(SECOND);
-	digitalWrite(port,LOW);
-	delay(SECOND/2); 
+  digitalWrite(port,HIGH);
+  delay(SECOND);
+  digitalWrite(port,LOW);
+  delay(SECOND/2); 
 }
 
 void setPorts(){
-	pinMode(LED_RED, OUTPUT);
-	pinMode(LED_GREEN, OUTPUT);
-	pinMode(LED_YELLOW, OUTPUT);
-	pinMode(LED_BLUE, OUTPUT);
-	pinMode(BUTTON_RED, INPUT_PULLUP);
-	pinMode(BUTTON_GREEN, INPUT_PULLUP);
-	pinMode(BUTTON_YELLOW, INPUT_PULLUP);
-	pinMode(BUTTON_BLUE, INPUT_PULLUP);
+  pinMode(LED_RED, OUTPUT);
+  pinMode(LED_GREEN, OUTPUT);
+  pinMode(LED_YELLOW, OUTPUT);
+  pinMode(LED_BLUE, OUTPUT);
+  pinMode(BUTTON_RED, INPUT_PULLUP);
+  pinMode(BUTTON_GREEN, INPUT_PULLUP);
+  pinMode(BUTTON_YELLOW, INPUT_PULLUP);
+  pinMode(BUTTON_BLUE, INPUT_PULLUP);
 
 }
 
 void setSequence(){
-	randomSeed(analogRead(0)); // Seeds the random number generator based on the analog reading from pin 0
-	for(int i = 0; i < SEQUENCE_LENGTH; i++){
-		ledSequence[i] = pickLed();
-  	}
+  randomSeed(analogRead(0)); // Seeds the random number generator based on the analog reading from pin 0
+    for(int i = 0; i < SEQUENCE_LENGTH; i++){
+      ledSequence[i] = pickLed();
+    }
 }
 
 int pickLed(){
@@ -146,23 +146,23 @@ void gameOverBlink(){
   delay(SECOND/10);
 }
 
-int	isButtonPressed(){
-	if(digitalRead(BUTTON_GREEN) == LOW) {
-      blinkLed(LED_GREEN); // make sure the button was pressed and read
-    	return LED_GREEN;  
-  	}
-  	if(digitalRead(BUTTON_YELLOW) == LOW) {
-      blinkLed(LED_YELLOW); // make sure the button was pressed and read
-  		return LED_YELLOW;  
-  	}
-  	if(digitalRead(BUTTON_RED) == LOW) {
-      blinkLed(LED_RED); // make sure the button was pressed and read
-    	return LED_RED;  
-  	}
-  	if(digitalRead(BUTTON_BLUE) == LOW) {
-      blinkLed(LED_BLUE); // make sure the button was pressed and read
-    	return LED_BLUE;  
-  	}
+int isButtonPressed(){
+  if(digitalRead(BUTTON_GREEN) == LOW) {
+    blinkLed(LED_GREEN); // make sure the button was pressed and read
+    return LED_GREEN;  
+  }
+  if(digitalRead(BUTTON_YELLOW) == LOW) {
+    blinkLed(LED_YELLOW); // make sure the button was pressed and read
+    return LED_YELLOW;  
+  }
+  if(digitalRead(BUTTON_RED) == LOW) {
+    blinkLed(LED_RED); // make sure the button was pressed and read
+    return LED_RED;  
+  }
+  if(digitalRead(BUTTON_BLUE) == LOW) {
+    blinkLed(LED_BLUE); // make sure the button was pressed and read
+    return LED_BLUE;  
+  }
   	
-  	return -1; // None of the buttons were pressed
+  return -1; // None of the buttons were pressed
 }
