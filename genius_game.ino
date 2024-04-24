@@ -126,10 +126,11 @@ int pickLed(){
 }
 
 void winBlink() {
-  blinkLed(LED_GREEN);
-  blinkLed(LED_YELLOW);
-  blinkLed(LED_RED);
   blinkLed(LED_BLUE);
+  blinkLed(LED_YELLOW);
+  blinkLed(LED_GREEN);
+  blinkLed(LED_RED);
+  
   delay(SECOND/2);
 }
 
